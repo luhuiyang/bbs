@@ -39,7 +39,7 @@ def index():
     return render_template('index.html', user=u)
 
 
-@main.route('/register', methods=['POSS'])
+@main.route('/register', methods=['POST'])
 def register():
     form = request.form
     # 用类函数来判断

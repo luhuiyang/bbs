@@ -1,10 +1,10 @@
 from flask import Flask
 
+import config
+
 from routes.index import main as index_routes
 from routes.topic import main as topic_routes
 from routes.reply import main as reply_routes
-
-import config
 
 # web framwork
 # web application
@@ -24,7 +24,6 @@ app.register_blueprint(index_routes)
 app.register_blueprint(topic_routes, url_prefix='/topic')
 app.register_blueprint(reply_routes, url_prefis='/topic')
 
-
 # 运行代码
 if __name__ == '__main__':
     # debug 模式可以自动加载你对代码的变动, 所以不用重启程序
@@ -35,4 +34,3 @@ if __name__ == '__main__':
         port=2000,
     )
     app.run(**config)
-

@@ -1,6 +1,5 @@
 import json
 import time
-
 from utils import log
 
 
@@ -11,11 +10,12 @@ def save(data, path):
     """
     s = json.dumps(data, indent=2, ensure_ascii=False)
     with open(path, 'w+', encoding='utf-8') as f:
+        # log('save', path, s, data)
         f.write(s)
 
 
 def load(path):
-    with open(path, 'r', encoding='utf-8')as f:
+    with open(path, 'r', encoding='utf-8') as f:
         s = f.read()
         # log('load', s)
         return json.loads(s)
@@ -31,7 +31,6 @@ class Model(object):
     user = User()
     user.db_path() 返回 User.txt
     """
-
     @classmethod
     def db_path(cls):
         """
@@ -76,6 +75,7 @@ class Model(object):
         # 因为这里是从 存储的数据文件 中加载所有的数据
         # 所以用 _new_from_dict 这个特殊的函数来初始化一个数据
         ms = [cls._new_from_dict(m) for m in models]
+        return ms
 
     @classmethod
     def find_all(cls, **kwargs):
@@ -103,6 +103,7 @@ class Model(object):
             k, v = key, value
         all = cls.all()
         for m in all:
+            # 也可以用 getattr(m, k) 取值
             if v == m.__dict__[k]:
                 return m
         return None
@@ -186,4 +187,3 @@ class Model(object):
         l = [m.__dict__ for m in models]
         path = self.db_path()
         save(l, path)
-

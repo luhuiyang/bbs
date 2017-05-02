@@ -3,3 +3,26 @@
 00:11:54 kwargs,  {'id': -1} <class 'dict'>
 00:16:56 kwargs,  {'username': 'ylh'} <class 'dict'>
 00:16:56 debug -1
+00:22:04 kwargs,  {'id': -1} <class 'dict'>
+00:22:09 kwargs,  {'username': 'ylh'} <class 'dict'>
+00:22:09 debug 0
+00:22:09 kwargs,  {'id': -1} <class 'dict'>
+00:22:15 kwargs,  {'username': 'ylh'} <class 'dict'>
+00:23:46 kwargs,  {'id': 1} <class 'dict'>
+00:23:46 kwargs,  {'id': 1} <class 'dict'>
+00:23:46 debug 0
+00:26:53 kwargs,  {'id': 1} <class 'dict'>
+00:26:53 debug 0
+00:26:53 kwargs,  {'topic_id': 1} <class 'dict'>
+00:26:53 kwargs,  {'topic_id': 1} <class 'dict'>
+00:26:59 kwargs,  {'id': 1} <class 'dict'>
+00:26:59 kwargs,  {'id': 2} <class 'dict'>
+00:26:59 debug 1
+00:26:59 kwargs,  {'topic_id': 2} <class 'dict'>
+00:26:59 kwargs,  {'topic_id': 2} <class 'dict'>
+00:27:03 kwargs,  {'topic_id': 1} <class 'dict'>
+00:27:03 kwargs,  {'topic_id': 2} <class 'dict'>
+00:27:05 kwargs,  {'id': 2} <class 'dict'>
+00:27:05 debug 1
+00:27:05 kwargs,  {'topic_id': 2} <class 'dict'>
+00:27:05 kwargs,  {'topic_id': 2} <class 'dict'>

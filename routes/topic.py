@@ -26,10 +26,10 @@ def index():
 def detail(id):
     m = Topic.get(id)
     # 传递 topic 的所有 reply 到页面中
-    return render_template('topic/ditail.html', topic=m)
+    return render_template('topic/detail.html', topic=m)
 
 
-@main.route('/add')
+@main.route('/add', methods=['POST'])
 def add():
     form = request.form
     u = current_user()

@@ -6,9 +6,8 @@ class User(Model):
     User 是一个保存用户数据的 model
     现在只有两个属性 username 和 password
     """
-
     def __init__(self, form):
-        self.id = form.get('id', '')
+        self.id = form.get('id', None)
         self.username = form.get('username', '')
         self.password = form.get('password', '')
 
@@ -16,13 +15,11 @@ class User(Model):
         import hashlib
         def sha256(ascii_str):
             return hashlib.sha256(ascii_str.encode('ascii')).hexdigest()
+        hash1 = sha256(password)
+        hash2 = sha256(hash1 + salt)
+        return hash2
 
-        # hash1 = sha256(password)
-        # hash2 = sha256(hash1 + salt)
-        hash = sha256(password + salt)
-        return hash
-
-    def hash_password(self, pwd):
+    def hashed_password(self, pwd):
         import hashlib
         # 用 ascii 编码转换成 bytes 对象
         p = pwd.encode('ascii')

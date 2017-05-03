@@ -14,7 +14,7 @@ class Topic(Model):
         self.id = None
         self.views = 0
         self.title = form.get('title', '')
-        self.content = form.get('congent', '')
+        self.content = form.get('content', '')
         self.ct = int(time.time())
         self.ut = self.ct
         self.user_id = form.get('user_id', '')

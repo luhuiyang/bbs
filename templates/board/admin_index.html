@@ -5,6 +5,14 @@
     <title>board admin</title>
 </head>
 <body>
+    {% for b in bs %}
+    <span>
+                    {{ b.title }}
+    </span>
+    <a href="/board/delete?board_id={{b.id}}"
+       > 删除 </a>
+    <br>
+    {% endfor %}
     <form action="/board/add" method="post">
         <input name="title">
         <br>

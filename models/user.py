@@ -10,6 +10,7 @@ class User(Model):
         self.id = form.get('id', None)
         self.username = form.get('username', '')
         self.password = form.get('password', '')
+        self.role = int(form.get('role', 11))
 
     def salted_password(self, password, salt='$!@><?>HUI&DWQa`'):
         import hashlib
@@ -34,6 +35,7 @@ class User(Model):
         if len(name) > 2 and User.find_by(username=name) is None:
             u = User.new(form)
             u.password = u.salted_password(pwd)
+            u.role = 11
             u.save()
             return u
         else:

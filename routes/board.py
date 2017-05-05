@@ -4,6 +4,7 @@ from flask import (
     redirect,
     url_for,
     Blueprint,
+    abort,
 )
 
 from routes import *
@@ -16,7 +17,11 @@ main = Blueprint('board', __name__)
 
 @main.route("/admin")
 def index():
-    return render_template('board/admin_index.html')
+    u = current_user()
+    if u.role != 1:
+        return redirect(url_for('topic.index'))
+    bs = Board.all()
+    return render_template('board/admin_index.html', bs=bs)
     ...
 
 
@@ -24,6 +29,19 @@ def index():
 def add():
     form = request.form
     u = current_user()
-    m = Board.new(form)
+    if u.role == 1:
+        m = Board.new(form)
     return redirect(url_for('topic.index'))
 
+
+@main.route("/delete")
+def delete():
+    id = int(request.args.get('board_id'))
+    u = current_user()
+    # 判断 token 是否是我们给的
+    if u.role == 1:
+        print('删除 board 用户是', u, id)
+        Board.delete(id)
+        return redirect(url_for('topic.index'))
+    else:
+        abort(404)

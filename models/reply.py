@@ -3,7 +3,6 @@ from models import Model
 
 
 class Reply(Model):
-
     def __init__(self, form):
         self.id = None
         self.content = form.get('content', '')

@@ -33,13 +33,14 @@ def current_user():
 用户登录后, 会写入 session, 并且定向到 /profile
 """
 
-@main.route('/')
+
+@main.route("/")
 def index():
     u = current_user()
-    return render_template('index.html', user=u)
+    return render_template("index.html", user=u)
 
 
-@main.route('/register', methods=['POST'])
+@main.route("/register", methods=['POST'])
 def register():
     form = request.form
     # 用类函数来判断
@@ -47,14 +48,14 @@ def register():
     return redirect(url_for('.index'))
 
 
-@main.route('/login', methods=['POST'])
+@main.route("/login", methods=['POST'])
 def login():
     form = request.form
     u = User.validate_login(form)
     if u is None:
         # 转到 topic.index 页面
         return redirect(url_for('topic.index'))
-    else :
+    else:
         # session 中写入 user_id
         session['user_id'] = u.id
         # 设置 cookie 有效期为 永久

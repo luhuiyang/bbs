@@ -29,7 +29,7 @@ def index():
         ms = Topic.find_all(board_id=board_id)
     token = str(uuid.uuid4())
     u = current_user()
-    csrf_tokens['token'] = u.id
+    # csrf_tokens['token'] = u.id
     bs = Board.all()
     return render_template("topic/index.html", ms=ms, token=token, bs=bs)
 
@@ -41,7 +41,9 @@ def detail(id):
     return render_template("topic/detail.html", topic=m)
 
 
+
 @main.route("/add", methods=["POST"])
+@login_required
 def add():
     form = request.form
     u = current_user()

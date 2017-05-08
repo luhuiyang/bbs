@@ -43,7 +43,6 @@ def detail(id):
 
 
 @main.route("/add", methods=["POST"])
-@login_required
 def add():
     form = request.form
     u = current_user()
